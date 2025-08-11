@@ -27,3 +27,6 @@ app.listen(PORT, () => {
 //npm install --save-dev nodemon
 //npx nodemon index.js
 //for installing nodemon locally
+
+//cd taskmanagerbackend
+//npx nodemon index.js
