@@ -11,6 +11,16 @@ const PORT = 8000;
 app.use(cors());
 app.use(express.json());
 
+// Root route
+app.get('/', (req, res) => {
+    res.json({ message: 'Task Manager API is running' });
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ status: 'healthy' });
+});
+
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/task-manager', {
     useNewUrlParser: true,
