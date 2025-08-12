@@ -44,25 +44,28 @@ Backend (Node.js)
 1. Frontend (React)
 ```mermaid
    Frontend Structure
-├── src/
-│   ├── components/
-│   │   └── TaskManager.js (Main component)
-│   │   └── TaskManager.css (Styling)
-│   ├── api.js (API integration)
-│   ├── index.js (Entry point)
-│   └── App.js (Root component)
+├── taskmanagerfrontend/
+│   └── frontend/
+│       └── src/
+│           ├── components/
+│              └── TaskManager.js (Main component)
+│              └── TaskManager.js (Main component)  
+│           ├── api.js (API integration)
+│           ├── index.js (Entry point)
+│           └── App.js (Root component)
 ```
 
 2. Backend (Node.js + Express)
 ```mermaid
-Backend Structure
-├── routes/
-│   └── enhancedTaskRoutes.js (API endpoints)
-├── models/
-│   └── task.js (Task schema)
-├── index.js (Server setup)
-└── middlewares/
-    └── auth.js (Authentication)
+│
+└──taskmanagerbackend/      Backend Structure
+    ├── routes/
+    │   └── enhancedTaskRoutes.js (API endpoints)
+    ├── models/
+    │   └── task.js (Task schema)
+    ├── index.js (Server setup)
+    └── middlewares/
+    │   └── auth.js (Authentication)
 ```
 
 
@@ -77,7 +80,7 @@ DELETE /api/tasks/:id - Delete task
 *User Flow Chart*
 ```mermaid
 User Flow
-1. User Opens Task Manager
+1. User Opens Task Manager Dashboard
    ├── Sees Clean Layout with Three Sections
    │   ├── Task Manager Title
    │   ├── Task Creation Form
@@ -98,8 +101,9 @@ User Flow
    │   └── Creation Date
    │
    └── Delete Task
-       ├── Click Delete Button
-       └── Task Removed from List
+   │    ├── Click Delete Button
+   │    └── Task Removed from List
+   └── Track task status 
 ```
 
 *Data Flow*
@@ -136,4 +140,25 @@ Frontend → API → Backend → MongoDB
     - API: RESTful endpoints
     - CORS enabled for cross-origin requests
 
-This summary provides a comprehensive overview of the project's structure, flow, and functionality. Each component works together to create a robust task management system with priority-based organization and easy task manipulation.
+**Key Technologies Used**
+1. Frontend
+   - React
+   - Axios
+   - CSS for styling
+2. Backend
+   - Node.js
+   - Express
+   - MongoDB
+   - Mongoose
+3. Development Tools
+   - npm
+   - MongoDB
+Deployment
+1. Backend
+   - Runs on port 8000
+   - MongoDB connection required
+2. Frontend
+   - Runs on port 3000
+   - Connects to backend API
+     
+This summary provides a complete overview of the project's structure, features, and implementation details. The task manager is now a fully functional application with priority-based task organization,easy task manipulation and modern UI elements.
