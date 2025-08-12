@@ -1,4 +1,5 @@
-*Frontend (React)*
+**System Architecture Flow**
+1. Frontend (React) 
 ```mermaid
 Frontend (React)
 ├── App.js (Main Component)
@@ -19,7 +20,7 @@ Frontend (React)
     └── DELETE /api/tasks/:id (Delete Task)
 ```
 
-Backend (Node.js + Express)
+2. Backend (Node.js + Express)
 ```mermaid
 Backend (Node.js)
 ├── Server Setup
@@ -39,7 +40,41 @@ Backend (Node.js)
         └── createdAt
 ```
 
-User Flow Chart
+**Technical Architecture**
+1. Frontend (React)
+```mermaid
+   Frontend Structure
+├── src/
+│   ├── components/
+│   │   └── TaskManager.js (Main component)
+│   │   └── TaskManager.css (Styling)
+│   ├── api.js (API integration)
+│   ├── index.js (Entry point)
+│   └── App.js (Root component)
+```
+
+2. Backend (Node.js + Express)
+```mermaid
+Backend Structure
+├── routes/
+│   └── enhancedTaskRoutes.js (API endpoints)
+├── models/
+│   └── task.js (Task schema)
+├── index.js (Server setup)
+└── middlewares/
+    └── auth.js (Authentication)
+```
+
+
+*API Endpoints*
+```mermaid
+API Endpoints
+GET /api/tasks - Get all tasks
+POST /api/tasks - Create new task
+DELETE /api/tasks/:id - Delete task
+```
+
+*User Flow Chart*
 ```mermaid
 User Flow
 1. User Opens Task Manager
@@ -67,7 +102,7 @@ User Flow
        └── Task Removed from List
 ```
 
-Data Flow
+*Data Flow*
 ```mermaid
 Data Flow
 Frontend → API → Backend → MongoDB
@@ -79,21 +114,26 @@ Frontend → API → Backend → MongoDB
    └── Frontend → DELETE /api/tasks/:id → Backend → MongoDB
 ```
 
-Key Features Summary
+**Key Features Summary**
 1. Task Management
     - Create tasks with title and description
     - Assign priority levels (Low/Medium/High)
-    - View task creation date
+    - Creation date display
     - Delete tasks
-2. Visual Elements
+    - Status tracking
+2. UI Components
+    - Clean layout with three main sections:
+      - Title heading
+      - Task creation form
+      - Task list display
     - Priority tags with color coding
-    - Clean task list layout
     - Responsive design
     - Loading states
-3. Technical Implementation
+4. Technical Implementation
     - Frontend: React with Axios
     - Backend: Node.js with Express
     - Database: MongoDB
     - API: RESTful endpoints
+    - CORS enabled for cross-origin requests
 
 This summary provides a comprehensive overview of the project's structure, flow, and functionality. Each component works together to create a robust task management system with priority-based organization and easy task manipulation.
