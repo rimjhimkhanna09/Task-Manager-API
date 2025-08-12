@@ -1,56 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import TaskForm from './components/TaskForm';
-import TaskList from './components/TaskList';
+import TaskManager from './components/TaskManager';
 import ThemeToggle from './components/ThemeToggle';
 import './App.css';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const savedTasks = localStorage.getItem('tasks');
-    if (savedTasks) {
-      setTasks(JSON.parse(savedTasks));
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDark(savedTheme === 'dark');
+    } else {
+      // Set based on system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDark(prefersDark);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
-
-  const addTask = (title) => {
-    const newTask = {
-      _id: Date.now().toString(),
-      title,
-      completed: false
-    };
-    setTasks([...tasks, newTask]);
-  };
-
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task._id !== id));
-  };
-
-  const toggleTask = (id) => {
-    setTasks(tasks.map(task => 
-      task._id === id ? { ...task, completed: !task.completed } : task
-    ));
-  };
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', isDark);
+  }, [isDark]);
 
   return (
-    <div className={`app ${isDark ? 'dark' : 'light'}`}>
+    <div className="app">
       <header className="app-header">
         <h1>Task Manager</h1>
         <ThemeToggle isDark={isDark} onToggle={() => setIsDark(!isDark)} />
       </header>
       <main className="app-main">
-        <TaskForm onAdd={addTask} />
-        <TaskList 
-          tasks={tasks} 
-          onDelete={deleteTask} 
-          onToggle={toggleTask} 
-        />
+        <TaskManager />
       </main>
     </div>
   );
